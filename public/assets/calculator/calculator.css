@@ -29,7 +29,7 @@ body {
   height: 100px;
   max-height: 100px;
   min-height: 100px;
-  overflow-y: scroll;
+  overflow: hidden;
 }
 
 .calculator-keybord button {
@@ -37,9 +37,18 @@ body {
   font-weight: bold;
 }
 
-.calculator-display-current {
+.calculator-display-text {
+  margin: 0;
   text-align: right;
-  line-height: 40px;
-  min-height: 40px;
-  font-size: 2.5em;
+  line-height: 35px;
+}
+
+.calculator-display-log {
+  color: #535353;
+  font-style: italic;
+  font-size: 1.1em;
+}
+
+.calculator-display-current {
+  font-size: 2em;
 }

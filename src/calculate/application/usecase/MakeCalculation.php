@@ -9,7 +9,7 @@ use app\calculate\application\usecase\PrepareExpression;
 
 class MakeCalculation
 {
-  public function execute(string $display, string $button): string
+  public function make(string $display, string $button): string
   {
     $result = '';
     $displayedText = new DisplayedText($display);

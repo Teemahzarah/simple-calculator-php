@@ -3,18 +3,20 @@
 namespace app\calculate\input\controller;
 
 use app\core\Controller;
+use app\calculate\application\usecase\MakeLog;
 use app\calculate\application\usecase\MakeCalculation;
+use app\calculate\application\usecase\CalculateResponse;
 
 class CalculateExpression extends Controller
 {
   public function render(): void
   {
-    header('Content-Type: application/json');
     $display = empty($this->getParams()->display) ? '' : $this->getParams()->display;
     $button = empty($this->getParams()->button) ? '0' : $this->getParams()->button;
-    $result = array(
-      'current' => (new MakeCalculation())->execute($display, $button)
+    (new CalculateResponse())->listenErros()->send(
+      (new MakeCalculation())->make($display, $button),
+      (new MakeLog())->make($display, $button)
     );
-    echo json_encode($result);
+    return;
   }
 }

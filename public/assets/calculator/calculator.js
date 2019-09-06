@@ -17,6 +17,8 @@ var Calculator = new function () {
       data: { display: display, button: button },
       success: function (result) {
         try {
+          $('.calculator-display-log', Calculator.documentObject)
+            .html(result.log)
           $('.calculator-display-current', Calculator.documentObject)
             .html(result.current)
         } catch (error) {
