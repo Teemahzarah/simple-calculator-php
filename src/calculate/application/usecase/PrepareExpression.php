@@ -7,9 +7,6 @@ use app\calculate\application\usecase\PressedButton;
 
 class PrepareExpression
 {
-  // const PATTERN = '/^(\d{1,})(\+|\-|\*|\/|mod)(\d{1,})$/';
-  const PATTERN = '/^(\d{1,})(\.\d{1,})?(\+|\-|\*|\/|mod)(\d{1,})(\.\d{1,})?$/';
-
   private $expression = '';
   private $numberA = 0.0;
   private $operation = '';
@@ -17,17 +14,18 @@ class PrepareExpression
 
   public function __construct(DisplayedText $displayedText, PressedButton $pressedButton)
   {
+    $pattern = '/^(\-?\d{1,})(\.\d{1,})?(\+|\-|\*|\/|mod)(\d{1,})(\.\d{1,})?$/';
     $this->expression = ($pressedButton->isNumber()) ?
       "{$displayedText->getText()}{$pressedButton->getValue()}" : $displayedText->getText();
-    if (preg_match(self::PATTERN, $this->expression)) {
-      $this->operation = preg_replace(self::PATTERN, '$3', $this->expression);
+    if (preg_match($pattern, $this->expression)) {
+      $this->operation = preg_replace($pattern, '$3', $this->expression);
       $this->numberA = floatval(
-        preg_replace(self::PATTERN, '$1', $this->expression) .
-          preg_replace(self::PATTERN, '$2', $this->expression)
+        preg_replace($pattern, '$1', $this->expression) .
+          preg_replace($pattern, '$2', $this->expression)
       );
       $this->numberB = floatval(
-        preg_replace(self::PATTERN, '$4', $this->expression) .
-          preg_replace(self::PATTERN, '$5', $this->expression)
+        preg_replace($pattern, '$4', $this->expression) .
+          preg_replace($pattern, '$5', $this->expression)
       );
     }
   }

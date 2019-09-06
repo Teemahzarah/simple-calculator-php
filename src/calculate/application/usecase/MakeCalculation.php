@@ -17,7 +17,7 @@ class MakeCalculation
     if (!$pressedButton->isReset()) {
       $expression = new PrepareExpression($displayedText, $pressedButton);
       $operation = new MakeOperation($expression, $pressedButton);
-      $result = $operation->getResult();
+      $result = (new DisplayedText($operation->getResult()))->getText();
     }
     return $result;
   }

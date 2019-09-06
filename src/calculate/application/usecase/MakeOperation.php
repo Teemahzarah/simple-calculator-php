@@ -37,6 +37,22 @@ class MakeOperation
           $result = ($this->expression->getNumberA()
             + $this->expression->getNumberB());
           break;
+        case '-':
+          $result = ($this->expression->getNumberA()
+            - $this->expression->getNumberB());
+          break;
+        case '*':
+          $result = ($this->expression->getNumberA()
+            * $this->expression->getNumberB());
+          break;
+        case '/':
+          $result = ($this->expression->getNumberA()
+            / $this->expression->getNumberB());
+          break;
+        case 'mod':
+          $result = ($this->expression->getNumberA()
+            % $this->expression->getNumberB());
+          break;
       }
     }
     return "{$result}";

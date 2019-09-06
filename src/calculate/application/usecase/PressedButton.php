@@ -4,13 +4,20 @@ namespace app\calculate\application\usecase;
 
 class PressedButton
 {
-  const ALLOWED = '/[\d|\.|\+|\-|\*|\/|mod]/si';
-
   private $value = null;
 
   public function __construct(string $value)
   {
-    $this->value = (preg_match(self::ALLOWED, $value)) ? $value : '';
+    $this->value = $value;
+    if ($this->isReset()) {
+      $this->value = 'reset';
+    } elseif ($this->isMod()) {
+      $this->value = 'mod';
+    } elseif (preg_match('/^[\d|\.|\=|\+|\-|\*|\/]$/', $this->value)) {
+      $this->value = $this->value;
+    } else {
+      $this->value = preg_replace('/\D/s', '', $this->value);
+    }
   }
 
   public function getValue(): string
@@ -31,6 +38,11 @@ class PressedButton
   public function isReset(): bool
   {
     return (preg_match('/(reset)/i', $this->value));
+  }
+
+  public function isMod(): bool
+  {
+    return (preg_match('/(mod)/i', $this->value));
   }
 
   public function isEqual(): bool
