@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+if [ -f "./composer.json" ]; then
+  composer update;
+  service php-fpm start;
+  /usr/sbin/nginx -g 'daemon off;';
+else
+  /bin/bash;
+fi
+exec "$@"

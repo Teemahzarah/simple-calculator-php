@@ -1,0 +1,33 @@
+version: "2.2"
+volumes:
+  SimpleCaculatorVolume: {}
+services:
+  SimpleCaculatorMariaDB:
+    cpus: 1
+    mem_limit: 448m
+    container_name: SimpleCaculatorMariaDB
+    env_file: ./.infra/mariadb/environment.env
+    ports:
+      - 3306:3306
+    volumes:
+      - SimpleCaculatorVolume:/var/lib/mysql
+    build:
+      dockerfile: ./.infra/mariadb/environment.dockerfile
+      context: .
+    image: simple-calculator-php-msql
+  SimpleCaculatorApp:
+    cpus: 1
+    mem_limit: 448m
+    container_name: SimpleCaculatorApp
+    env_file: ./.infra/app/environment.env
+    ports:
+      - 80:8080
+    volumes:
+      - .:/var/www/app
+      - ./.infra/app/server.conf:/etc/nginx/conf.d/server.conf
+    build:
+      dockerfile: ./.infra/app/environment.dockerfile
+      context: .
+    image: simple-calculator-php-app
+    depends_on:
+      - SimpleCaculatorMariaDB

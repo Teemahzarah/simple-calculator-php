@@ -1,0 +1,23 @@
+{
+  "name": "helionogueir/simple-calculator-php",
+  "description": "Simple Calculator in PHP",
+  "homepage": "https://github.com/helionogueir",
+  "license": "MIT",
+  "keywords": [
+    "calculator"
+  ],
+  "require": {
+    "php": ">=7.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "app\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Helio Nogueira",
+      "email": "helio.nogueir@gmail.com"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Calculator">
+  <meta name="author" content="Helio Nogueira">
+  <title>Calculator</title>
+  <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/calculator/calculator.css" rel="stylesheet">
+</head>
+
+<body class="text-center">
+  <div class="calculator container">
+    <div class="calculator-display card bg-light">
+      <pre class="calculator-display-current card-body"></pre>
+    </div>
+    <div class="card">
+      <div class="calculator-keybord card-body">
+        <div class="row">
+          <button type="button" class="col-2 col-md-2 btn btn-outline-dark">7</button>
+          <button type="button" class="col-2 col-md-2 btn btn-outline-dark">8</button>
+          <button type="button" class="col-2 col-md-2 btn btn-outline-dark">9</button>
+          <button type="button" class="col-2 col-md-2 btn btn-secondary">/</button>
+        </div>
+        <div class="row">
+          <button type="button" class="col-2 col-md-2 btn btn-outline-dark">4</button>
+          <button type="button" class="col-2 col-md-2 btn btn-outline-dark">5</button>
+          <button type="button" class="col-2 col-md-2 btn btn-outline-dark">6</button>
+          <button type="button" class="col-2 col-md-2 btn btn-secondary">*</button>
+        </div>
+        <div class="row">
+          <button type="button" class="col-2 col-md-2 btn btn-outline-dark">1</button>
+          <button type="button" class="col-2 col-md-2 btn btn-outline-dark">2</button>
+          <button type="button" class="col-2 col-md-2 btn btn-outline-dark">3</button>
+          <button type="button" class="col-2 col-md-2 btn btn-secondary">-</button>
+          <button type="button" class="col-2 col-md-3 btn btn-danger"><small>reset</small></button>
+        </div>
+        <div class="row">
+          <button type="button" class="col-2 col-md-2 btn btn-outline-dark">0</button>
+          <button type="button" class="col-2 col-md-2 btn btn-outline-dark">.</button>
+          <button type="button" class="col-2 col-md-2 btn btn-secondary">+</button>
+          <button type="button" class="col-2 col-md-2 btn btn-secondary"><small>mod</small></button>
+          <button type="button" class="col-2 col-md-3 btn btn-dark">=</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <script src="/assets/jquery/jquery.min.js"></script>
+  <script src="/assets/calculator/calculator.js"></script>
+  <script>$(document).ready(function () { Calculator.onload(this) })</script>
+</body>
+
+</html>
